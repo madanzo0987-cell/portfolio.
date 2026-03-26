@@ -10,95 +10,106 @@
 <body class="bg-gray-50 text-gray-900 font-sans">
 
     <header class="py-16 text-center bg-white shadow-sm">
-        <img src="https://via.placeholder.com/150" alt="Profile Picture" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-indigo-500">
-        <h1 class="text-4xl font-bold">Your Name</h1>
-        <p class="text-gray-600 mt-2">Full Stack Developer | Supabase Enthusiast</p>
+        <img src="https://via.placeholder.com/150" alt="Profile Picture" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-indigo-500 object-cover">
+        <h1 class="text-4xl font-bold text-gray-800">Your Name</h1>
+        <p class="text-gray-600 mt-2 text-lg">Full Stack Developer | Supabase Enthusiast</p>
     </header>
 
     <section class="max-w-5xl mx-auto py-12 px-4">
-        <h2 class="text-2xl font-bold mb-8 text-center">Certifications</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="bg-white p-4 shadow rounded-lg hover:shadow-lg transition">
-                <img src="https://via.placeholder.com/200x150" alt="Cert 1" class="rounded mb-2">
+        <h2 class="text-2xl font-bold mb-8 text-center uppercase tracking-wide">Certifications</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white p-4 shadow rounded-lg hover:shadow-xl transition-shadow duration-300">
+                <img src="https://via.placeholder.com/200x150" alt="Cloud Architecture" class="rounded mb-3 w-full">
                 <p class="font-semibold text-sm text-center">Cloud Architecture</p>
             </div>
-            <div class="bg-white p-4 shadow rounded-lg hover:shadow-lg transition">
-                <img src="https://via.placeholder.com/200x150" alt="Cert 2" class="rounded mb-2">
+            <div class="bg-white p-4 shadow rounded-lg hover:shadow-xl transition-shadow duration-300">
+                <img src="https://via.placeholder.com/200x150" alt="Frontend Mastery" class="rounded mb-3 w-full">
                 <p class="font-semibold text-sm text-center">Frontend Mastery</p>
             </div>
-            <div class="bg-white p-4 shadow rounded-lg hover:shadow-lg transition">
-                <img src="https://via.placeholder.com/200x150" alt="Cert 3" class="rounded mb-2">
+            <div class="bg-white p-4 shadow rounded-lg hover:shadow-xl transition-shadow duration-300">
+                <img src="https://via.placeholder.com/200x150" alt="Backend Logic" class="rounded mb-3 w-full">
                 <p class="font-semibold text-sm text-center">Backend Logic</p>
             </div>
-            <div class="bg-white p-4 shadow rounded-lg hover:shadow-lg transition">
-                <img src="https://via.placeholder.com/200x150" alt="Cert 4" class="rounded mb-2">
+            <div class="bg-white p-4 shadow rounded-lg hover:shadow-xl transition-shadow duration-300">
+                <img src="https://via.placeholder.com/200x150" alt="Database Management" class="rounded mb-3 w-full">
                 <p class="font-semibold text-sm text-center">Database Management</p>
             </div>
         </div>
     </section>
 
     <section class="max-w-xl mx-auto py-12 px-4">
-        <div class="bg-white p-8 rounded-xl shadow-md">
+        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
             <h2 class="text-2xl font-bold mb-6 text-center">Work with me</h2>
             <form id="contactForm" class="space-y-4">
                 <div>
-                    <label class="block text-sm font-medium">Name</label>
-                    <input type="text" id="name" required class="w-full p-2 border border-gray-300 rounded mt-1 focus:ring-2 focus:ring-indigo-400 outline-none">
+                    <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                    <input type="text" id="name" required class="w-full p-3 border border-gray-300 rounded-md mt-1 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium">Email</label>
-                    <input type="email" id="email" required class="w-full p-2 border border-gray-300 rounded mt-1 focus:ring-2 focus:ring-indigo-400 outline-none">
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" id="email" required class="w-full p-3 border border-gray-300 rounded-md mt-1 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium">Message</label>
-                    <textarea id="message" rows="4" required class="w-full p-2 border border-gray-300 rounded mt-1 focus:ring-2 focus:ring-indigo-400 outline-none"></textarea>
+                    <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                    <textarea id="message" rows="4" required class="w-full p-3 border border-gray-300 rounded-md mt-1 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"></textarea>
                 </div>
-                <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded-lg font-semibold hover:bg-indigo-700 transition">Send Message</button>
+                <button type="submit" id="submitBtn" class="w-full bg-indigo-600 text-white py-3 rounded-lg font-bold hover:bg-indigo-700 active:scale-[0.98] transition-transform disabled:bg-gray-400">
+                    Send Message
+                </button>
             </form>
-            <p id="statusMsg" class="mt-4 text-center text-sm hidden"></p>
+            <div id="statusMsg" class="mt-4 text-center text-sm font-medium hidden"></div>
         </div>
     </section>
 
     <script>
-    // Initialize Supabase (Use your actual URL and Key or the CI/CD placeholders)
-    const _supabase = supabase.createClient('{{https://ovvstxqsjrkbbapzzjzy.supabase.co}}', '{{eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im92dnN0eHFzanJrYmJhcHp6anp5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIxNjE3MzksImV4cCI6MjA4NzczNzczOX0.tO387Ut-wTmvGmOQIZmSoRUdo9cQcvQ-CmjuAcbMl5w}}');
-
-    const contactForm = document.getElementById('contactForm');
-    const statusMsg = document.getElementById('statusMsg');
-
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+        // 1. Fixed Initialization: Removed {{ }} placeholders
+        const SUPABASE_URL = 'https://ovvstxqsjrkbbapzzjzy.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im92dnN0eHFzanJrYmJhcHp6anp5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIxNjE3MzksImV4cCI6MjA4NzczNzczOX0.tO387Ut-wTmvGmOQIZmSoRUdo9cQcvQ-CmjuAcbMl5w';
         
-        // Visual feedback: Disable button while sending
-        const submitBtn = contactForm.querySelector('button');
-        submitBtn.disabled = true;
-        submitBtn.innerText = "Sending...";
+        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            message: document.getElementById('message').value
-        };
+        const contactForm = document.getElementById('contactForm');
+        const statusMsg = document.getElementById('statusMsg');
+        const submitBtn = document.getElementById('submitBtn');
 
-        // RECTIFIED: Pointing to 'feedback' table
-        const { error } = await _supabase
-            .from('feedback')
-            .insert([formData]);
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // UI Update: Loading State
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Sending...";
+            statusMsg.classList.add('hidden');
 
-        if (error) {
-            statusMsg.textContent = "Error: " + error.message;
-            statusMsg.className = "mt-4 text-center text-sm text-red-500";
-            submitBtn.disabled = false;
-            submitBtn.innerText = "Send Message";
-        } else {
-            statusMsg.textContent = "Feedback received! Thank you.";
-            statusMsg.className = "mt-4 text-center text-sm text-green-500";
-            contactForm.reset();
-            submitBtn.disabled = false;
-            submitBtn.innerText = "Send Message";
-        }
-        statusMsg.classList.remove('hidden');
-    });
-</script>
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            };
+
+            try {
+                // Insert into your Supabase table
+                const { error } = await _supabase
+                    .from('feedback')
+                    .insert([formData]);
+
+                if (error) throw error;
+
+                // Success State
+                statusMsg.textContent = "Success! Your message has been sent.";
+                statusMsg.className = "mt-4 text-center text-sm font-medium text-green-600";
+                contactForm.reset();
+
+            } catch (err) {
+                // Error State
+                statusMsg.textContent = "Error: " + err.message;
+                statusMsg.className = "mt-4 text-center text-sm font-medium text-red-600";
+            } finally {
+                // Reset Button State
+                statusMsg.classList.remove('hidden');
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Send Message";
+            }
+        });
+    </script>
 </body>
 </html>
